@@ -2,13 +2,13 @@ package xrand
 
 import "math/bits"
 
-// https://prng.di.unimi.it/xoroshiro256starstar.c
+// https://prng.di.unimi.it/xoshiro256starstar.c
 
-type Xoroshiro256ss struct {
+type Xoshiro256ss struct {
 	s [4]uint64
 }
 
-func (x *Xoroshiro256ss) Seed(seed int64) {
+func (x *Xoshiro256ss) Seed(seed int64) {
 	s := NewSplitMix64(seed)
 	x.s[0] = s.Uint64()
 	x.s[1] = s.Uint64()
@@ -16,7 +16,7 @@ func (x *Xoroshiro256ss) Seed(seed int64) {
 	x.s[3] = s.Uint64()
 }
 
-func (x *Xoroshiro256ss) Uint64() uint64 {
+func (x *Xoshiro256ss) Uint64() uint64 {
 	result := bits.RotateLeft64(x.s[1]*5, 7) * 9
 	t := x.s[1] << 17
 
@@ -31,16 +31,16 @@ func (x *Xoroshiro256ss) Uint64() uint64 {
 	return result
 }
 
-func (x *Xoroshiro256ss) Int64() int64 {
+func (x *Xoshiro256ss) Int64() int64 {
 	return unsafeUint64ToInt64(x.Uint64())
 }
 
-func (x *Xoroshiro256ss) Int63() int64 {
+func (x *Xoshiro256ss) Int63() int64 {
 	return int64(x.Uint64() & (1<<63 - 1))
 }
 
 // Call Uint64() * 2^128
-func (x *Xoroshiro256ss) Jump() {
+func (x *Xoshiro256ss) Jump() {
 	var (
 		jump = [...]uint64{0x180ec6d33cfd0aba, 0xd5a61266f0c9392c, 0xa9582618e03fc9aa, 0x39abdc4529b1661c}
 	)
@@ -65,7 +65,7 @@ func (x *Xoroshiro256ss) Jump() {
 }
 
 // Call Uint64() * 2^192
-func (x *Xoroshiro256ss) LongJump() {
+func (x *Xoshiro256ss) LongJump() {
 	var (
 		jump = [...]uint64{0x76e15d3efefdcbbf, 0xc5004e441c522fb3, 0x77710069854ee241, 0x39109bb02acbe635}
 	)
