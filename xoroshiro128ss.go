@@ -1,11 +1,20 @@
 package xrand
 
-import "math/bits"
+import (
+	"math"
+	"math/bits"
+)
 
 // https://prng.di.unimi.it/xoroshiro128starstar.c
 
 type Xoroshiro128ss struct {
 	s [2]uint64
+}
+
+func NewXoroshiro128ss(seed int64) *Xoroshiro128ss {
+	x := Xoroshiro128ss{}
+	x.Seed(seed)
+	return &x
 }
 
 func (x *Xoroshiro128ss) Seed(seed int64) {
@@ -29,6 +38,10 @@ func (x *Xoroshiro128ss) Int64() int64 {
 
 func (x *Xoroshiro128ss) Int63() int64 {
 	return int64(x.Uint64() & (1<<63 - 1))
+}
+
+func (x *Xoroshiro128ss) Float64() float64 {
+	return math.Float64frombits(0x3ff<<52|x.Uint64()>>12) - 1.0
 }
 
 // Call Uint64() * 2^64

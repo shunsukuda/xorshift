@@ -1,11 +1,20 @@
 package xrand
 
-import "math/bits"
+import (
+	"math"
+	"math/bits"
+)
 
 // https://prng.di.unimi.it/xoshiro512plusplus.c
 
 type Xoshiro512pp struct {
 	s [8]uint64
+}
+
+func NewXoshiro512pp(seed int64) *Xoshiro512pp {
+	x := Xoshiro512pp{}
+	x.Seed(seed)
+	return &x
 }
 
 func (x *Xoshiro512pp) Seed(seed int64) {
@@ -45,6 +54,10 @@ func (x *Xoshiro512pp) Int64() int64 {
 
 func (x *Xoshiro512pp) Int63() int64 {
 	return int64(x.Uint64() & (1<<63 - 1))
+}
+
+func (x *Xoshiro512pp) Float64() float64 {
+	return math.Float64frombits(0x3ff<<52|x.Uint64()>>12) - 1.0
 }
 
 // Call Uint64() * 2^256

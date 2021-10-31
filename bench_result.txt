@@ -1,0 +1,82 @@
+> go test -bench .    
+goos: windows
+goarch: amd64
+pkg: github.com/shunsukuda/xrand
+cpu: AMD Ryzen 7 1700 Eight-Core Processor
+BenchmarkSplitMix64Uint64-16            1000000000               0.3066 ns/op          0 B/op          0 allocs/op
+BenchmarkSplitMix64Int64-16             1000000000               0.3015 ns/op          0 B/op          0 allocs/op
+BenchmarkSplitMix64Int63-16             1000000000               0.3026 ns/op          0 B/op          0 allocs/op
+BenchmarkXoroshiro128pUint64-16         268670530                4.422 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128pInt64-16          268365574                4.536 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128pInt63-16          264684882                4.504 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128pFloat64-16        259173163                4.423 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128pJump-16            6279404               185.3 ns/op             0 B/op          0 allocs/op
+BenchmarkXoroshiro128pLongJump-16        4427247               264.7 ns/op             0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppUint64-16        268385226                4.452 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppInt64-16         234881686                5.023 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppInt63-16         276617966                4.440 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppFloat64-16       214226535                5.516 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppJump-16           5839921               201.7 ns/op             0 B/op          0 allocs/op
+BenchmarkXoroshiro128ppLongJump-16       4532509               258.9 ns/op             0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssUint64-16        271064354                4.413 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssInt64-16         267143606                4.414 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssInt63-16         274096362                4.268 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssFloat64-16       221283488                5.570 ns/op           0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssJump-16           6373851               188.7 ns/op             0 B/op          0 allocs/op
+BenchmarkXoroshiro128ssLongJump-16       4399119               264.6 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256pUint64-16           163878490                7.063 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256pInt64-16            152566764                7.765 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256pInt63-16            147705050                8.271 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256pFloat64-16          142994725                8.267 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256pJump-16              5917206               194.1 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256pLongJump-16          1940750               627.5 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256ppUint64-16          147550803                8.246 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ppInt64-16           145420900                8.079 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ppInt63-16           148775258                8.045 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ppFloat64-16         147425259                8.230 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ppJump-16             6071380               200.3 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256ppLongJump-16         1890253               619.9 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256ssUint64-16          145883583                7.801 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ssInt64-16           146771094                8.015 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ssInt63-16           149617033                7.880 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ssFloat64-16         148422555                8.131 ns/op           0 B/op          0 allocs/op
+BenchmarkXoshiro256ssJump-16             5097006               233.4 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro256ssLongJump-16         1920578               622.5 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro512pUint64-16           91293584                12.89 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512pInt64-16            97071470                13.12 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512pInt63-16            90388056                13.16 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512pFloat64-16          85587738                13.18 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512pJump-16               999499              1080 ns/op               0 B/op          0 allocs/op
+BenchmarkXoshiro512pLongJump-16          1278993               902.4 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro512ppUint64-16          89352643                13.39 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ppInt64-16           90133785                13.23 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ppInt63-16           90396998                13.20 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ppFloat64-16         89252464                12.78 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ppJump-16             1132066              1066 ns/op               0 B/op          0 allocs/op
+BenchmarkXoshiro512ppLongJump-16         1299024               921.3 ns/op             0 B/op          0 allocs/op
+BenchmarkXoshiro512ssUint64-16          79987201                12.94 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ssInt64-16           74908237                13.38 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ssInt63-16           89540923                13.54 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ssFloat64-16         90464940                13.81 ns/op            0 B/op          0 allocs/op
+BenchmarkXoshiro512ssJump-16             1094276              1155 ns/op               0 B/op          0 allocs/op
+BenchmarkXoshiro512ssLongJump-16         1000000              1014 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppUint64-16       52083106                22.47 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppInt64-16        52347763                22.70 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppInt63-16        51533790                22.47 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppFloat64-16      53191714                21.94 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppJump-16           226168              4890 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ppLongJump-16       196077              5634 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sUint64-16        48864112                20.90 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sInt64-16         49882982                21.84 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sInt63-16         55814913                21.02 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sFloat64-16       53667639                22.71 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sJump-16            243876              4947 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024sLongJump-16        181254              5971 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssUint64-16       46805522                21.92 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssInt64-16        50933137                22.75 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssInt63-16        47960288                24.21 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssFloat64-16      47649300                24.23 ns/op            0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssJump-16           222411              5178 ns/op               0 B/op          0 allocs/op
+BenchmarkXoroshiro1024ssLongJump-16       191667              5791 ns/op               0 B/op          0 allocs/op
+PASS
+ok      github.com/shunsukuda/xrand     121.645s

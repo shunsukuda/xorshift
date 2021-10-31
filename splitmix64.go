@@ -4,6 +4,8 @@ import "unsafe"
 
 type SplitMix64 uint64
 
+// https://prng.di.unimi.it/splitmix64.c
+
 func NewSplitMix64(seed int64) SplitMix64 {
 	var x SplitMix64
 	x.Seed(seed)
@@ -19,7 +21,7 @@ func (x *SplitMix64) Seed(seed int64) {
 }
 
 func (x *SplitMix64) Uint64() uint64 {
-	*x = *x + SplitMix64(0x9E3779B97F4A7C15)
+	*x += SplitMix64(0x9E3779B97F4A7C15)
 	z := x.State()
 	z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9
 	z = (z ^ (z >> 27)) * 0x94D049BB133111EB
