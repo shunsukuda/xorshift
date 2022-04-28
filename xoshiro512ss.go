@@ -1,8 +1,11 @@
 package xrand
 
 import (
+	"encoding/binary"
+	"fmt"
 	"math"
 	"math/bits"
+	"time"
 )
 
 // https://prng.di.unimi.it/xoshiro512starstar.c
@@ -15,6 +18,31 @@ func NewXoshiro512ss(seed int64) *Xoshiro512ss {
 	x := Xoshiro512ss{}
 	x.Seed(seed)
 	return &x
+}
+
+func (x Xoshiro512ss) State() []byte {
+	s := make([]byte, 64)
+	binary.BigEndian.PutUint64(s[:8], x.s[0])
+	binary.BigEndian.PutUint64(s[8:16], x.s[1])
+	binary.BigEndian.PutUint64(s[16:24], x.s[2])
+	binary.BigEndian.PutUint64(s[24:32], x.s[3])
+	binary.BigEndian.PutUint64(s[32:40], x.s[4])
+	binary.BigEndian.PutUint64(s[40:48], x.s[5])
+	binary.BigEndian.PutUint64(s[48:56], x.s[6])
+	binary.BigEndian.PutUint64(s[56:64], x.s[7])
+	return s
+}
+
+func (x *Xoshiro512ss) SetState(state []byte) {
+	mix := NewSplitMix64(time.Now().UTC().UnixNano())
+	x.s[0] = bytesToState64(state, 0, &mix)
+	x.s[1] = bytesToState64(state, 1, &mix)
+	x.s[2] = bytesToState64(state, 2, &mix)
+	x.s[3] = bytesToState64(state, 3, &mix)
+	x.s[4] = bytesToState64(state, 4, &mix)
+	x.s[5] = bytesToState64(state, 5, &mix)
+	x.s[6] = bytesToState64(state, 6, &mix)
+	x.s[7] = bytesToState64(state, 7, &mix)
 }
 
 func (x *Xoshiro512ss) Seed(seed int64) {
@@ -130,4 +158,12 @@ func (x *Xoshiro512ss) LongJump() {
 	x.s[5] = s[5]
 	x.s[6] = s[6]
 	x.s[7] = s[7]
+}
+
+func (x Xoshiro512ss) String() string {
+	return fmt.Sprintf("%0128x", x.State())
+}
+
+func (x Xoshiro512ss) GoString() string {
+	return "xrand.Xoshiro512ss{state:\"" + x.String() + "\"}"
 }

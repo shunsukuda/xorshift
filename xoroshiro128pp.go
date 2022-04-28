@@ -1,8 +1,11 @@
 package xrand
 
 import (
+	"encoding/binary"
+	"fmt"
 	"math"
 	"math/bits"
+	"time"
 )
 
 // https://prng.di.unimi.it/xoroshiro128plusplus.c
@@ -15,6 +18,19 @@ func NewXoroshiro128pp(seed int64) *Xoroshiro128pp {
 	x := Xoroshiro128pp{}
 	x.Seed(seed)
 	return &x
+}
+
+func (x Xoroshiro128pp) State() []byte {
+	s := make([]byte, 16)
+	binary.BigEndian.PutUint64(s[:8], x.s[0])
+	binary.BigEndian.PutUint64(s[8:], x.s[1])
+	return s
+}
+
+func (x *Xoroshiro128pp) SetState(state []byte) {
+	mix := NewSplitMix64(time.Now().UTC().UnixNano())
+	x.s[0] = bytesToState64(state, 0, &mix)
+	x.s[1] = bytesToState64(state, 1, &mix)
 }
 
 func (x *Xoroshiro128pp) Seed(seed int64) {
@@ -84,4 +100,12 @@ func (x *Xoroshiro128pp) LongJump() {
 
 	x.s[0] = s[0]
 	x.s[1] = s[1]
+}
+
+func (x Xoroshiro128pp) String() string {
+	return fmt.Sprintf("%032x", x.State())
+}
+
+func (x Xoroshiro128pp) GoString() string {
+	return "xrand.Xoroshiro128pp{state:\"" + x.String() + "\"}"
 }

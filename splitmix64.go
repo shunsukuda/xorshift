@@ -1,8 +1,10 @@
 package xrand
 
-import "unsafe"
+import "fmt"
 
-type SplitMix64 uint64
+type SplitMix64 struct {
+	s uint64
+}
 
 // https://prng.di.unimi.it/splitmix64.c
 
@@ -13,18 +15,18 @@ func NewSplitMix64(seed int64) SplitMix64 {
 }
 
 func (x SplitMix64) State() uint64 {
-	return uint64(x)
+	return uint64(x.s)
 }
 
 func (x *SplitMix64) Seed(seed int64) {
-	*x = SplitMix64(unsafeInt64ToUint64(seed))
+	x.s = unsafeInt64ToUint64(seed)
 }
 
 func (x *SplitMix64) Uint64() uint64 {
-	*x += SplitMix64(0x9E3779B97F4A7C15)
+	x.s += 0x9e3779b97f4a7c15
 	z := x.State()
-	z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9
-	z = (z ^ (z >> 27)) * 0x94D049BB133111EB
+	z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9
+	z = (z ^ (z >> 27)) * 0x94d049bb133111eb
 	return z ^ (z >> 31)
 }
 
@@ -36,10 +38,10 @@ func (x *SplitMix64) Int63() int64 {
 	return int64(x.Uint64()) & (1<<63 - 1)
 }
 
-func unsafeInt64ToUint64(v int64) uint64 {
-	return *(*uint64)(unsafe.Pointer(&v))
+func (x SplitMix64) String() string {
+	return fmt.Sprintf("%032x", x.State())
 }
 
-func unsafeUint64ToInt64(v uint64) int64 {
-	return *(*int64)(unsafe.Pointer(&v))
+func (x SplitMix64) GoString() string {
+	return "xrand.SplitMix64{state:\"" + x.String() + "\"}"
 }

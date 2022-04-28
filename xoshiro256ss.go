@@ -1,8 +1,11 @@
 package xrand
 
 import (
+	"encoding/binary"
+	"fmt"
 	"math"
 	"math/bits"
+	"time"
 )
 
 // https://prng.di.unimi.it/xoshiro256starstar.c
@@ -15,6 +18,23 @@ func NewXoshiro256ss(seed int64) *Xoshiro256ss {
 	x := Xoshiro256ss{}
 	x.Seed(seed)
 	return &x
+}
+
+func (x Xoshiro256ss) State() []byte {
+	s := make([]byte, 32)
+	binary.BigEndian.PutUint64(s[:8], x.s[0])
+	binary.BigEndian.PutUint64(s[8:16], x.s[1])
+	binary.BigEndian.PutUint64(s[16:24], x.s[2])
+	binary.BigEndian.PutUint64(s[24:32], x.s[3])
+	return s
+}
+
+func (x *Xoshiro256ss) SetState(state []byte) {
+	mix := NewSplitMix64(time.Now().UTC().UnixNano())
+	x.s[0] = bytesToState64(state, 0, &mix)
+	x.s[1] = bytesToState64(state, 1, &mix)
+	x.s[2] = bytesToState64(state, 2, &mix)
+	x.s[3] = bytesToState64(state, 3, &mix)
 }
 
 func (x *Xoshiro256ss) Seed(seed int64) {
@@ -102,4 +122,12 @@ func (x *Xoshiro256ss) LongJump() {
 	x.s[1] = s[1]
 	x.s[2] = s[2]
 	x.s[3] = s[3]
+}
+
+func (x Xoshiro256ss) String() string {
+	return fmt.Sprintf("%064x", x.State())
+}
+
+func (x Xoshiro256ss) GoString() string {
+	return "xrand.Xoshiro256ss{state:\"" + x.String() + "\"}"
 }

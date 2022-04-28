@@ -1,8 +1,11 @@
 package xrand
 
 import (
+	"encoding/binary"
+	"fmt"
 	"math"
 	"math/bits"
+	"time"
 )
 
 // https://prng.di.unimi.it/xoroshiro1024plusplus.c
@@ -16,6 +19,47 @@ func NewXoroshiro1024pp(seed int64) *Xoroshiro1024pp {
 	x := Xoroshiro1024pp{}
 	x.Seed(seed)
 	return &x
+}
+
+func (x Xoroshiro1024pp) State() []byte {
+	s := make([]byte, 128)
+	binary.BigEndian.PutUint64(s[:8], x.s[0])
+	binary.BigEndian.PutUint64(s[8:16], x.s[1])
+	binary.BigEndian.PutUint64(s[16:24], x.s[2])
+	binary.BigEndian.PutUint64(s[24:32], x.s[3])
+	binary.BigEndian.PutUint64(s[32:40], x.s[4])
+	binary.BigEndian.PutUint64(s[40:48], x.s[5])
+	binary.BigEndian.PutUint64(s[48:56], x.s[6])
+	binary.BigEndian.PutUint64(s[56:64], x.s[7])
+	binary.BigEndian.PutUint64(s[64:72], x.s[8])
+	binary.BigEndian.PutUint64(s[72:80], x.s[9])
+	binary.BigEndian.PutUint64(s[80:88], x.s[10])
+	binary.BigEndian.PutUint64(s[88:96], x.s[11])
+	binary.BigEndian.PutUint64(s[96:104], x.s[12])
+	binary.BigEndian.PutUint64(s[104:112], x.s[13])
+	binary.BigEndian.PutUint64(s[112:120], x.s[14])
+	binary.BigEndian.PutUint64(s[120:128], x.s[15])
+	return s
+}
+
+func (x *Xoroshiro1024pp) SetState(state []byte) {
+	mix := NewSplitMix64(time.Now().UTC().UnixNano())
+	x.s[0] = bytesToState64(state, 0, &mix)
+	x.s[1] = bytesToState64(state, 1, &mix)
+	x.s[2] = bytesToState64(state, 2, &mix)
+	x.s[3] = bytesToState64(state, 3, &mix)
+	x.s[4] = bytesToState64(state, 4, &mix)
+	x.s[5] = bytesToState64(state, 5, &mix)
+	x.s[6] = bytesToState64(state, 6, &mix)
+	x.s[7] = bytesToState64(state, 7, &mix)
+	x.s[8] = bytesToState64(state, 8, &mix)
+	x.s[9] = bytesToState64(state, 9, &mix)
+	x.s[10] = bytesToState64(state, 10, &mix)
+	x.s[11] = bytesToState64(state, 11, &mix)
+	x.s[12] = bytesToState64(state, 12, &mix)
+	x.s[13] = bytesToState64(state, 13, &mix)
+	x.s[14] = bytesToState64(state, 14, &mix)
+	x.s[15] = bytesToState64(state, 15, &mix)
 }
 
 func (x *Xoroshiro1024pp) Seed(seed int64) {
@@ -170,4 +214,12 @@ func (x *Xoroshiro1024pp) LongJump() {
 	x.s[(13+x.p)&15] = s[13]
 	x.s[(14+x.p)&15] = s[14]
 	x.s[(15+x.p)&15] = s[15]
+}
+
+func (x Xoroshiro1024pp) String() string {
+	return fmt.Sprintf("%064x", x.State())
+}
+
+func (x Xoroshiro1024pp) GoString() string {
+	return "xrand.Xoshiro1024pp{state:\"" + x.String() + "\"}"
 }
