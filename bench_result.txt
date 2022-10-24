@@ -1,140 +1,135 @@
-> go test -bench Seed
-goos: windows
+$ go test -bench Seed
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkSplitMix64Seed-12              1000000000               0.2437 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128pSeed-12           579362247                2.092 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppSeed-12          574258846                2.033 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssSeed-12          605563921                2.027 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256pSeed-12             322462754                3.702 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ppSeed-12            341676308                3.561 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ssSeed-12            326147222                3.828 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512pSeed-12             172021356                7.033 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ppSeed-12            172751253                6.946 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ssSeed-12            169543058                6.993 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppSeed-12         85701429                14.50 ns/op            0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sSeed-12          86317893                14.04 ns/op            0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssSeed-12         79907839                14.73 ns/op            0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkSplitMix64Seed-4        	1000000000	         0.4134 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128pSeed-4     	295913124	         4.153 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppSeed-4    	249589765	         4.989 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssSeed-4    	245440360	         4.185 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pSeed-4       	169943268	         6.720 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppSeed-4      	171644643	         6.919 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssSeed-4      	176882911	         6.703 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pSeed-4       	83307241	        13.21 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppSeed-4      	79254589	        14.91 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssSeed-4      	94489722	        12.97 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppSeed-4   	44823003	        23.13 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sSeed-4    	49355419	        26.10 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssSeed-4   	47929686	        27.31 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     18.817s
+ok  	github.com/shunsukuda/xrand	19.322s
 
-
-> go test -bench Uint64
-goos: windows
+$ go test -bench Uint64
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkSplitMix64Uint64-12            1000000000               0.3082 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128pUint64-12         1000000000               0.7371 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppUint64-12        1000000000               0.7972 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssUint64-12        1000000000               0.7354 ns/op          0 B/op          0 allocs/op
-BenchmarkXoshiro256pUint64-12           454459898                2.645 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ppUint64-12          481001444                2.479 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ssUint64-12          460778530                2.609 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512pUint64-12           472272488                2.542 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ppUint64-12          461853231                2.509 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ssUint64-12          468672925                2.616 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppUint64-12       1000000000               1.098 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sUint64-12        1000000000               1.073 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssUint64-12       1000000000               1.064 ns/op           0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkSplitMix64Uint64-4        	484455222	         2.324 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128pUint64-4     	426090205	         2.531 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppUint64-4    	476547004	         2.506 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssUint64-4    	430044178	         2.489 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pUint64-4       	340693030	         3.526 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppUint64-4      	267235146	         4.482 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssUint64-4      	287503278	         3.987 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pUint64-4       	233868326	         5.293 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppUint64-4      	217984695	         5.695 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssUint64-4      	211870278	         5.585 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppUint64-4   	383933040	         3.179 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sUint64-4    	372414957	         3.182 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssUint64-4   	347757164	         3.456 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     15.307s
+ok  	github.com/shunsukuda/xrand	20.332s
 
-
-> go test -bench Int63 
-goos: windows
+$ go test -bench Int63
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkSplitMix64Int63-12             1000000000               0.4879 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128pInt63-12          1000000000               0.7329 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppInt63-12         1000000000               0.7286 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssInt63-12         1000000000               0.7480 ns/op          0 B/op          0 allocs/op
-BenchmarkXoshiro256pInt63-12            488369877                2.443 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ppInt63-12           472246281                2.526 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ssInt63-12           456230222                2.618 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512pInt63-12            467748360                2.585 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ppInt63-12           473545573                2.494 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ssInt63-12           462123936                2.527 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppInt63-12        531569937                2.295 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sInt63-12         1000000000               1.129 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssInt63-12        530236515                2.286 ns/op           0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkSplitMix64Int63-4        	578268950	         2.045 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128pInt63-4     	487151538	         2.597 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppInt63-4    	487063928	         2.605 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssInt63-4    	465208159	         2.572 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pInt63-4       	259173504	         4.412 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppInt63-4      	255000080	         4.685 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssInt63-4      	290512390	         3.881 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pInt63-4       	219459597	         5.766 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppInt63-4      	180952766	         5.744 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssInt63-4      	206821563	         5.703 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppInt63-4   	256515381	         4.807 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sInt63-4    	376463475	         3.592 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssInt63-4   	268656669	         4.242 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     15.945s
+ok  	github.com/shunsukuda/xrand	21.131s
 
-
-> go test -bench Int64
-goos: windows
+$ go test -bench Int64
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkSplitMix64Int64-12             1000000000               0.5070 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128pInt64-12          1000000000               0.7449 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppInt64-12         768626214                1.543 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssInt64-12         1000000000               0.7311 ns/op          0 B/op          0 allocs/op
-BenchmarkXoshiro256pInt64-12            490284801                2.407 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ppInt64-12           464888158                2.546 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ssInt64-12           450282945                2.558 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512pInt64-12            472105824                2.512 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ppInt64-12           483331311                2.477 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ssInt64-12           480191883                2.569 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppInt64-12        522606201                2.332 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sInt64-12         1000000000               1.111 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssInt64-12        530829704                2.277 ns/op           0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkSplitMix64Int64-4        	568406166	         2.097 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128pInt64-4     	465943952	         2.456 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppInt64-4    	405376519	         2.844 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssInt64-4    	485330630	         2.586 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pInt64-4       	247515080	         4.590 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppInt64-4      	267325101	         4.780 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssInt64-4      	317949997	         4.218 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pInt64-4       	198890958	         6.646 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppInt64-4      	193223700	         5.624 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssInt64-4      	200643440	         6.224 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppInt64-4   	232509642	         4.887 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sInt64-4    	345539250	         3.495 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssInt64-4   	229556920	         4.786 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     16.468s
+ok  	github.com/shunsukuda/xrand	21.310s
 
-
-> go test -bench Float64
-goos: windows
+$ go test -bench Float64
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkXoroshiro128pFloat64-12        1000000000               0.7449 ns/op          0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppFloat64-12       785462656                1.509 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssFloat64-12       816818288                1.493 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256pFloat64-12          482255412                2.566 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ppFloat64-12         458387224                2.553 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro256ssFloat64-12         468043729                2.551 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512pFloat64-12          477768248                2.518 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ppFloat64-12         480420848                2.561 ns/op           0 B/op          0 allocs/op
-BenchmarkXoshiro512ssFloat64-12         463248560                2.616 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppFloat64-12      466961137                2.504 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sFloat64-12       534334795                2.313 ns/op           0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssFloat64-12      473880496                2.479 ns/op           0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkXoroshiro128pFloat64-4     	451865409	         2.927 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppFloat64-4    	288242004	         3.906 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssFloat64-4    	323514259	         3.670 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pFloat64-4       	233472663	         5.073 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppFloat64-4      	266087511	         5.000 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssFloat64-4      	260645221	         4.468 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pFloat64-4       	198267010	         5.710 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppFloat64-4      	187288476	         5.843 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssFloat64-4      	197287244	         5.891 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppFloat64-4   	206702347	         5.314 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sFloat64-4    	232852090	         5.431 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssFloat64-4   	209944334	         5.271 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     16.801s
+ok  	github.com/shunsukuda/xrand	20.359s
 
-
-> go test -bench Jump   
-goos: windows
+$ go test -bench Jump
+goos: linux
 goarch: amd64
 pkg: github.com/shunsukuda/xrand
-cpu: AMD Ryzen 5 5600G with Radeon Graphics
-BenchmarkXoroshiro128pJump-12           12532479                94.27 ns/op            0 B/op          0 allocs/op
-BenchmarkXoroshiro128pLongJump-12       10604612               116.2 ns/op             0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppJump-12          12735567                91.61 ns/op            0 B/op          0 allocs/op
-BenchmarkXoroshiro128ppLongJump-12      10312209               122.9 ns/op             0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssJump-12          12998154                92.30 ns/op            0 B/op          0 allocs/op
-BenchmarkXoroshiro128ssLongJump-12      10322402               115.0 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256pJump-12              7636701               158.5 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256pLongJump-12          4005499               306.1 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256ppJump-12             7449691               156.0 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256ppLongJump-12         4376174               270.5 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256ssJump-12             7641476               155.8 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro256ssLongJump-12         4345878               272.9 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512pJump-12              1826131               631.0 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512pLongJump-12          2158461               564.4 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512ppJump-12             1827242               645.1 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512ppLongJump-12         2113356               551.5 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512ssJump-12             1823210               635.7 ns/op             0 B/op          0 allocs/op
-BenchmarkXoshiro512ssLongJump-12         2146804               559.1 ns/op             0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppJump-12           352018              3389 ns/op               0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ppLongJump-12       299120              4008 ns/op               0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sJump-12            351966              3404 ns/op               0 B/op          0 allocs/op
-BenchmarkXoroshiro1024sLongJump-12        294915              4035 ns/op               0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssJump-12           272643              3684 ns/op               0 B/op          0 allocs/op
-BenchmarkXoroshiro1024ssLongJump-12       294093              3977 ns/op               0 B/op          0 allocs/op
+cpu: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+BenchmarkXoroshiro128pJump-4         	 5070849	       216.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128pLongJump-4     	 4013518	       315.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppJump-4        	 5172801	       222.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ppLongJump-4    	 3807897	       291.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssJump-4        	 5455797	       234.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro128ssLongJump-4    	 4366106	       266.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pJump-4           	 3399843	       357.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256pLongJump-4       	 1550709	       725.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppJump-4          	 3671454	       325.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ppLongJump-4      	 1595449	       774.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssJump-4          	 3841414	       308.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro256ssLongJump-4      	 1571343	       792.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pJump-4           	  785365	      1429 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512pLongJump-4       	 1000000	      1221 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppJump-4          	  821216	      1458 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ppLongJump-4      	  899034	      1260 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssJump-4          	  760714	      1459 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoshiro512ssLongJump-4      	 1044663	      1201 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppJump-4       	  169527	      7211 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ppLongJump-4   	  127065	      9206 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sJump-4        	  169052	      7352 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024sLongJump-4    	  114136	     10960 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssJump-4       	  166797	      7308 ns/op	       0 B/op	       0 allocs/op
+BenchmarkXoroshiro1024ssLongJump-4   	  139617	      8701 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok      github.com/shunsukuda/xrand     34.512s
+ok  	github.com/shunsukuda/xrand	36.685s
